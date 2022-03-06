@@ -1,0 +1,47 @@
+{{! metodo for para recorrer #each  }}
+
+{{#if tasks}}
+
+  <table class='table table-bordered table-hover table-dark'>
+    <thead>
+      <tr>
+        <th>N.</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each tasks}}
+        <tr>
+          <td>{{@index}}</td>
+          <td>{{this.title}}</td>
+          <td>{{this.description}}</td>
+          <td>
+            {{#if done}}
+              <a href='/toggleDone/{{_id}}' class='btn btn-light'>Undone</a>
+            {{else}}
+              <a href='/toggleDone/{{_id}}' class='btn btn-success'>Done</a>
+            {{/if}}
+            <a href='/edit/{{_id}}' class='btn btn-primary'>Update</a>
+            <a href='/delete/{{_id}}' class='btn btn-danger'>Delete</a>
+          </td>
+        </tr>
+
+      {{/each}}
+    </tbody>
+  </table>
+
+{{else}}
+  <div class='text-center'>
+    <h1>No Tasks</h1>
+    <img
+      src='https://media.giphy.com/media/3o7bu0zqjQXqQlqZzK/giphy.gif'
+      alt='img'
+      height="150px"
+      width="150px"
+    />
+  </div>
+
+{{/if}}
